@@ -4,7 +4,7 @@ function getClientInfo() {
     return {
         "name": SV.T(SCRIPT_TITLE),
         "author": "R.D.M.",
-        "versionNumber": 1,
+        "versionNumber": 2,
         "minEditorVersion": 65537
     }
 }
@@ -58,6 +58,8 @@ var chr = [
     ]
 ];
 
+var guarded_note = [".sil",".pau",".cl","-","+","br"];
+
 function srand(seed) {
     _rand = seed ^ 0x7C38FA53;
 }
@@ -80,7 +82,7 @@ function main() {
                 "type" : "ComboBox",
                 "label" : SV.T("Language"),
                 "choices" : [SV.T("Japanese"),
-                             SV.T("English"), 
+                             SV.T("English"),
                              SV.T("Mandarin")],
                 "default" : 0
             },
@@ -120,7 +122,9 @@ function main() {
         }
 
         for(var i = 0; i < selectedNotes.length; i ++) {
-            selectedNotes[i].setLyrics(chr[lang][rand(chr[lang].length)]);
+            if (guarded_note.indexOf(selectedNotes[i].getLyrics()) == -1) {
+                selectedNotes[i].setLyrics(chr[lang][rand(chr[lang].length)]);
+            }
         }
     }
     SV.finish();
