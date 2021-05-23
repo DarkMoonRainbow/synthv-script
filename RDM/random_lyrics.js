@@ -89,7 +89,7 @@ function main() {
             {
                 "name"     : "seed",
                 "type"     : "Slider",
-                "label"    : SV.T("Random seed"),
+                "label"    : SV.T("Lyrics No."),
                 "format"   : "%1.0f",
                 "minValue" : 1,
                 "maxValue" : 100000,
@@ -99,7 +99,7 @@ function main() {
             {
                 "name"     : "en_seed",
                 "type"     : "CheckBox",
-                "text"     : SV.T("Enable random seed"),
+                "text"     : SV.T("Use fixed lyrics"),
                 "default"  : false
             }
         ]
